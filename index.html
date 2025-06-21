@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sithuru Kawinda | Portfolio</title>
+    <link rel="icon" href="images/image.png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #f97316;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: #f5f7fa;
+            scroll-behavior: smooth;
+        }
+        
+        /* Particles.js container */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #accdf8 100%);
+        }
+        
+        .particles-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .navbar {
+            background-color: rgba(91, 189, 238, 0.316);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark) !important;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            margin: 15px;
+            position: relative;
+            margin-bottom: 45px;
+            text-align: center;
+            font: bold;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .hero {
+            background: transparent;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .profile-img {
+            width: 100%;
+            margin-top: 25px;
+            max-width: 350px;
+            height: auto;
+            border-radius: 50%;
+            border: 10px solid rgb(47, 225, 228);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        .about-content {
+            background: rgb(199, 223, 255);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+        }
+        
+        .skill-bar {
+            margin-bottom: 25px;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-progress {
+            height: 10px;
+            background: #85baff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress span {
+            display: block;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            position: relative;
+            animation: animateBar 1.5s;
+        }
+        
+        @keyframes animateBar {
+            from { width: 0; }
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: rgb(255, 255, 255);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-content h4 {
+            color: var(--primary);
+        }
+        
+        .project-card {
+            border: 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            text-align: center;
+            margin: 6px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #e4e4e4;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Floating elements animation */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: floatElement 15s infinite linear;
+        }
+        
+        @keyframes floatElement {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Section backgrounds */
+        .section-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-light {
+            background-color: #f8fafc !important;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles.js Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sithuru Kawinda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+  <div class="container particles-content">
+    <div class="row align-items-center">
+      <div class="col-lg-6 hero-content">
+        <h1 class="display-4 display-md-3">Hi, I'm <span style="color: var(--primary);">Sithuru Kawinda</span></h1>
+        <h2 class="h3">Computer Science Undergraduate</h2>
+        <p>I'm a passionate Computer Science undergraduate at the University of Sri Jayewardenepura, dedicated to creating innovative web solutions using cutting-edge technologies. I love turning ideas into reality through code.</p>
+        
+        <div class="social-links mt-3">
+          <a href="https://github.com/sithuru-kawinda"  onclick="location.reload(); return false;" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-icon bg-dark">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/sithuru-kawinda" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon bg-dark">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://facebook.com/kawinda.samarakoon" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="social-icon bg-dark">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://youtube.com/@codehub12" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" class="social-icon bg-dark">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 text-center">
+        <img src="images/image.png" alt="Portrait of Sithuru Kawinda" class="profile-img img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="pt-5">
+        <div class="section-bg">
+            <!-- Floating elements background -->
+            <div class="floating-elements"></div>
+        </div>
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="about-content">
+                          <h3 class="mb-3">I'm Sithuru Kawinda</h3>
+                          <p>A university undergraduate based in Sri Lanka with a passion for developing innovative web applications. My full-stack expertise spans both frontend and backend technologies, enabling me to build complete end-to-end solutions.</p>
+    
+                          <p>I specialize in Frontend Development (React, HTML, CSS, JavaScript) with complementary skills in Java and Python. This allows me to create responsive user interfaces while also developing robust server-side applications.</p>
+                          <p>Continuously learning and adapting to new technologies is my core philosophy. I thrive on solving complex problems through elegant, efficient solutions.</p>
+    
+                 <div class="row mt-4">
+                   <div class="col-md-6">
+                       <p><strong>Email:</strong> sithuru15@gmail.com</p>
+                       <p><strong>Phone:</strong> 070-347-4125</p>
+                   </div>
+                   <div class="col-md-6">
+                       <p><strong>Location:</strong> Sri Lanka</p>
+                       <p><strong>Availability:</strong> Full-time</p>
+                   </div>
+                 </div>
+                        <a href="" class="btn btn-primary mt-3">Download Resume</a>
+                     </div>
+                </div>
+                <div class="col-lg-6">
+    <h3 class="mb-4">My Skills</h3>
+
+    <div class="skill-bar">
+        <div class="skill-info">
+            <span>HTML5 & CSS3</span>
+            <span>95%</span>
+        </div>
+        <div class="skill-progress">
+            <span style="width: 95%;"></span>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <div class="skill-info">
+            <span>Java</span>
+            <span>90%</span>
+        </div>
+        <div class="skill-progress">
+            <span style="width: 90%;"></span>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <div class="skill-info">
+            <span>React.js</span>
+            <span>60%</span>
+        </div>
+        <div class="skill-progress">
+            <span style="width: 60%;"></span> <!-- Fixed -->
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <div class="skill-info">
+            <span>Docker</span>
+            <span>50%</span>
+        </div>
+        <div class="skill-progress">
+            <span style="width: 50%;"></span> <!-- Fixed -->
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <div class="skill-info">
+            <span>MySql</span>
+            <span>80%</span>
+        </div>
+        <div class="skill-progress">
+            <span style="width: 80%;"></span>
+        </div>
+    </div>
+
+    <div class="skill-bar">
+        <div class="skill-info">
+            <span>Bootstrap & Responsive Design</span>
+            <span>95%</span>
+        </div>
+        <div class="skill-progress">
+            <span style="width: 95%;"></span>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="bg-light ">
+        <div class="container ">
+            <h2 class="section-title">My Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Bachelor of Science in Physical</h4>
+
+                        <h5>University of Sri Jayawardhanapura</h5>
+                        <p class="text-muted">2023 - 2025</p>
+                       <p>Following a path in <strong>Computer Science</strong> , Maths and Physics with completed projects in full-stack development and machine learning.</p>
+                    </div>
+                </div>
+                <div class="timeline-item ">
+                    <div class="timeline-content">
+                        <h4>Web Development </h4>
+                        <h5>Dp Education</h5>
+                        <p class="text-muted">2024 - 2025</p>
+                        <p>Intensive training program covering HTML, CSS, JavaScript, React, python, and mysql.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Completed Internship</h4>
+                        <h5>Bank Of Ceylon</h5>
+                        <p class="text-muted">2022 - 2023</p>
+                        <p>Successfully completed a School Leaver Training Programme focused on practical and career development skills.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Advanced Level</h4>
+                        <h5>Physical Science Stream</h5>
+                        <p class="text-muted">2017 - 2021</p>
+                        <p>Completed A/Ls with a focus on Mathematics, Physics, and Chemistry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+<section id="projects">
+    <div class="section-bg">
+        <!-- Floating elements background -->
+        <div class="floating-elements"></div>
+    </div>
+    <div class="container">
+        <h2 class="section-title">Projects Made</h2>
+        <div class="row">
+            <!-- First Card (Unchanged) -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <img src="projects/restaurant_booking.png" alt="Project" class="card-img-top project-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Restaurant Booking Platform</h5>
+                        <h3 class="text-light bg-secondary">JAVA</h3>
+                        <p class="card-text">Restaurant Booking platform built with Java with Xampp localhost.</p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="https://drive.google.com/file/d/1ImLL9kjmfkFwkcQTlSNlGx0J_WAnDngw/view?usp=drive_link" class="btn btn-sm btn-primary" target="_blank">View Project</a>
+                            <a href="https://drive.google.com/drive/folders/1m1c_Tiag7OAHFnOWoJxhC3FBmZUBtYs1?usp=drive_link" class="btn btn-sm btn-outline-primary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Second Card (Unchanged) -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <img src="projects/school_Management.png" alt="Project" class="card-img-top project-img">
+                    <div class="card-body">
+                        <h5 class="card-title">School Management System</h5>
+                         <h3 class="text-light bg-secondary">JAVA</h3>
+                        <p class="card-text">School Management project use java lanvage & Mysql.</p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="https://drive.google.com/file/d/1Fiz9HN5xmhGd-raANGJMtDGXOWhBMNx5/view?usp=drive_link" class="btn btn-sm btn-primary" onclick="playVideoAndReload()" target="_blank">View Project</a>
+                            <a href="https://drive.google.com/drive/folders/1KDQ7el0XSgycwgR1jW2pAYXEi-i16-zN?usp=drive_link" class="btn btn-sm btn-outline-primary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Third Card (Now with Video) -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <img src="projects/vehical.png" alt="Project" class="card-img-top project-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Vehical Rental website</h5>
+                         <h3 class="text-light bg-secondary">HTML CSS JS</h3>
+                        <p class="card-text">HTML CSS JS use create website</p>
+                        <div class="d-flex justify-content-between mt-3">
+                           <a href="https://drive.google.com/file/d/18E9ikSiIHHD7vmdREKax3j1AtwRrHmDD/view?usp=drive_link" class="btn btn-sm btn-primary" target="_blank">View Project</a>
+                            <a href="https://github.com/sithuru-kawinda/vehical.git" class="btn btn-sm btn-outline-primary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fourth Card (Now with Video) -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <video autoplay muted loop playsinline class="card-img-top project-img">
+                        <source src="projects/videos/v4.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="card-body">
+                        <h5 class="card-title">Coding Api learning website</h5> 
+                         <h3 class="text-light bg-secondary">HTML CSS JS</h3>
+                        <p class="card-text">learning website project use HTML CSS JS.</p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="https://drive.google.com/file/d/1Yt8P-VH5YwM94cgSXIEg5sqVfY78FrsG/view?usp=drive_link" class="btn btn-sm btn-primary" target="_blank">View Project</a>
+                            <a href="https://drive.google.com/drive/folders/1qS_8iY5ZlWMn0ouGIAr3eWcAU2_h77u6?usp=drive_link" class="btn btn-sm btn-outline-primary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fifth Card (Now with Video) -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <video autoplay muted loop playsinline class="card-img-top project-img">
+                        <source src="projects/videos/voice assistent.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="card-body">
+                        <h5 class="card-title">Ai voice assistent</h5>
+                        <h3 class="text-light bg-secondary">HTML CSS JS</h3>
+                        <p class="card-text">using api create ai voice asistent</p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="https://drive.google.com/file/d/1C6TLIf4kuWlZInW_0EM2tsfNu7PzsXeT/view?usp=drive_link" class="btn btn-sm btn-primary" target="_blank">View Project</a>
+                            <a href="https://drive.google.com/drive/folders/1qS_8iY5ZlWMn0ouGIAr3eWcAU2_h77u6?usp=drive_link" class="btn btn-sm btn-outline-primary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sixth Card (Now with Video) -->
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <img src="projects/data_visualisation.png" alt="Project" class="card-img-top project-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Selling Data Visualization</h5>
+                         <h3 class="text-light bg-secondary">Python</h3>
+                        <p class="card-text">Using python models create data visualization system in shop.</p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="https://drive.google.com/uc?export=preview&id=1AbCDefGhIJkLmNOPqrsTuvWxYz&autoplay=1" class="btn btn-sm btn-primary" target="_blank">View Project</a>
+                            <a href="https://drive.google.com/drive/folders/1KUJ5i22xQbeEKwDCfuhRHgYQFS8rF1he?usp=drive_link" class="btn btn-sm btn-outline-primary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-5 mb-4">
+                    <h3 class="mb-4">Contact Information</h3>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h5>Phone</h5>
+                            <p>070-347-4125</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>sithuru15@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h5>Location</h5>
+                            <p>Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h5>Follow Me</h5>
+                        <div class="social-links mt-3">
+                            <a href="https://github.com/sithuru-kawinda" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-icon bg-dark">
+                              <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/sithuru-kawinda" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon bg-dark">
+                              <i class="fab fa-linkedin-in"></i>
+                             </a>
+                             <a href="https://facebook.com/kawinda.samarakoon" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="social-icon bg-dark">
+                              <i class="fab fa-facebook"></i>
+                             </a>
+                             <a href="https://youtube.com/@codehub12" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" class="social-icon bg-dark">
+                               <i class="fab fa-youtube"></i>
+                             </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <form  action="https://formspree.io/f/xovwjbkk" method="POST">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="col-md-6">
+            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+        </div>
+    </div>
+    <input type="text" name="subject" class="form-control" placeholder="Subject">
+    <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Footer -->
+<footer class="bg-dark text-white pt-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4 mb-4">
+                <h3>Sithuru Kawinda</h3>
+                <p>Full Stack Developer creating innovative web solutions with modern technologies.</p>
+                <div class="social-links mt-3">
+                   <a href="https://github.com/sithuru-kawinda" class="text-white me-2" target="_blank"><i class="fab fa-github"></i></a>
+                   <a href="https://linkedin.com/in/sithuru-kawinda" class="text-white me-2" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                   <a href="https://facebook.com/kawinda.samarakoon" class="text-white me-2" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://youtube.com/@codehub12" class="text-white me-2" target="_blank"><i class="fab fa-youtube"></i></a>
+               </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4 mb-4">
+                <h4>Quick Links</h4>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="#about" class="text-white text-decoration-none">About</a></li>
+                    <li class="mb-2"><a href="#projects" class="text-white text-decoration-none">projects</a></li>
+                    <li class="mb-2"><a href="#education" class="text-white text-decoration-none">education</a></li>
+                    <li class="mb-2"><a href="#contact" class="text-white text-decoration-none">contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-4 mb-4">
+                <h4>Contact Me</h4>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-envelope me-2"></i> sithuru15@gmail.com.com</li>
+                    <li class="mb-2"><i class="fas fa-phone me-2"></i> +94 703474125</li>
+                    <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Kurunegala, Sri lanka</li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="bg-light">
+        <div class="text-center py-3">
+            <p class="mb-0">&copy; 2025 Sithuru Kawinda. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 1000
+                    }
+                },
+                "color": {
+                    "value": "#2563eb"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 10,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#2563eb",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 300,
+                        "size": 50,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+        
+        
+        
+        // Create floating elements for sections
+        function createFloatingElements() {
+            const containers = document.querySelectorAll('.floating-elements');
+            
+            containers.forEach(container => {
+                container.innerHTML = '';
+                
+                for (let i = 0; i < 15; i++) {
+                    const element = document.createElement('div');
+                    element.classList.add('floating-element');
+                    
+                    const size = Math.random() * 40 + 10;
+                    element.style.width = `${size}px`;
+                    element.style.height = `${size}px`;
+                    element.style.left = `${Math.random() * 100}%`;
+                    element.style.bottom = `-${size}px`;
+                    element.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                    element.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    container.appendChild(element);
+                }
+            });
+        }
+        
+        createFloatingElements();
+        window.addEventListener('resize', createFloatingElements);
+        
+     // Add active class to nav links on scroll and handle mobile menu closing
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+const navbarToggler = document.querySelector('.navbar-toggler');
+const navbarCollapse = document.querySelector('.navbar-collapse');
+
+// Scroll event for active nav links
+window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - 300)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Click event for mobile nav closing
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        // Check if mobile menu is open (Bootstrap 5 specific)
+        if (navbarCollapse.classList.contains('show')) {
+            // Trigger click on the toggler button to close the menu
+            navbarToggler.click();
+        }
+    });
+});
+
+        // Form submission handler (single event listener)
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const form = e.target;
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                
+                // Disable button during submission
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // Success - show confirmation and reload
+                        submitButton.textContent = 'Sent!';
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500); // Reload after 1.5 seconds
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                    
+                } catch (error) {
+                    // Error handling
+                    submitButton.textContent = 'Error - Try Again';
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                    }, 2000);
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
