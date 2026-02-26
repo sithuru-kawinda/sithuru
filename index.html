@@ -1518,79 +1518,81 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Get In <span>Touch</span></h2>
+      <!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Get In <span>Touch</span></h2>
+        
+        <div class="contact-grid">
+            <div class="card-modern" data-aos="fade-right">
+                <h3 class="text-primary mb-4">Contact Information</h3>
                 
-                <div class="contact-grid">
-                    <div class="card-modern" data-aos="fade-right">
-                        <h3 class="text-primary mb-4">Contact Information</h3>
-                        
-                        <div class="contact-item-modern">
-                            <div class="contact-icon-modern">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <div class="info-label">Phone</div>
-                                <div class="info-value">070-347-4125</div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item-modern">
-                            <div class="contact-icon-modern">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <div class="info-label">Email</div>
-                                <div class="info-value">sithuru15@gmail.com</div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item-modern">
-                            <div class="contact-icon-modern">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <div class="info-label">Location</div>
-                                <div class="info-value">Sri Lanka</div>
-                            </div>
-                        </div>
-                        
-                        <h4 class="mt-5 mb-3">Follow Me</h4>
-                        <div class="social-links">
-                            <a href="https://github.com/sithuru-kawinda" target="_blank" class="social-icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/sithuru-kawinda" target="_blank" class="social-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://facebook.com/kawinda.samarakoon" target="_blank" class="social-icon">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://youtube.com/@codehub12" target="_blank" class="social-icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
+                <div class="contact-item-modern">
+                    <div class="contact-icon-modern">
+                        <i class="fas fa-phone"></i>
                     </div>
-                    
-                    <div class="card-modern" data-aos="fade-left">
-                        <h3 class="text-primary mb-4">Send Message</h3>
-                        
-                        <form action="https://formspree.io/f/xovwjbkk" method="POST">
-                            <input type="text" name="name" class="form-control-modern" placeholder="Your Name" required>
-                            <input type="email" name="email" class="form-control-modern" placeholder="Your Email" required>
-                            <input type="text" name="subject" class="form-control-modern" placeholder="Subject">
-                            <textarea name="message" class="form-control-modern" rows="5" placeholder="Your Message" required></textarea>
-                            <button type="submit" class="btn-custom btn-primary-custom w-100">
-                                <i class="fas fa-paper-plane"></i>
-                                Send Message
-                            </button>
-                        </form>
+                    <div>
+                        <div class="info-label">Phone</div>
+                        <div class="info-value">070-347-4125</div>
                     </div>
                 </div>
+                
+                <div class="contact-item-modern">
+                    <div class="contact-icon-modern">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <div class="info-label">Email</div>
+                        <div class="info-value">sithuru15@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div class="contact-item-modern">
+                    <div class="contact-icon-modern">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <div class="info-label">Location</div>
+                        <div class="info-value">Sri Lanka</div>
+                    </div>
+                </div>
+                
+                <h4 class="mt-5 mb-3">Follow Me</h4>
+                <div class="social-links">
+                    <a href="https://github.com/sithuru-kawinda" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/sithuru-kawinda" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://facebook.com/kawinda.samarakoon" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://youtube.com/@codehub12" target="_blank" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
             </div>
-        </section>
+            
+            <div class="card-modern" data-aos="fade-left">
+                <h3 class="text-primary mb-4">Send Message</h3>
+                
+                <div id="form-messages" class="mb-3"></div>
+                
+                <form id="contact-form" method="POST" action="send_email.php">
+                    <input type="text" name="name" class="form-control-modern" placeholder="Your Name" required>
+                    <input type="email" name="email" class="form-control-modern" placeholder="Your Email" required>
+                    <input type="text" name="subject" class="form-control-modern" placeholder="Subject" required>
+                    <textarea name="message" class="form-control-modern" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn-custom btn-primary-custom w-100" id="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Footer -->
         <footer class="footer-modern">
@@ -1833,3 +1835,4 @@
     </script>
 </body>
 </html>
+
