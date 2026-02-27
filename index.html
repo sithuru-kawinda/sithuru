@@ -35,6 +35,8 @@
             --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.7);
             --shadow-cyan: 0 10px 30px rgba(0, 255, 255, 0.15);
+            --success: #00ff88;
+            --error: #ff3366;
         }
 
         * {
@@ -709,6 +711,81 @@
             color: var(--text-muted);
         }
 
+        /* Alert Messages */
+        .alert-message {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            min-width: 300px;
+            max-width: 400px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .alert-message.show {
+            transform: translateX(0);
+        }
+
+        .alert-message.success {
+            border-color: var(--success);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .alert-message.success .alert-icon {
+            color: var(--success);
+        }
+
+        .alert-message.error {
+            border-color: var(--error);
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.2);
+        }
+
+        .alert-message.error .alert-icon {
+            color: var(--error);
+        }
+
+        .alert-icon {
+            font-size: 1.5rem;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .alert-text {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .alert-close {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0 5px;
+            transition: 0.3s;
+        }
+
+        .alert-close:hover {
+            color: var(--primary);
+        }
+
         /* Footer */
         .footer-modern {
             background: var(--bg-darker);
@@ -858,6 +935,15 @@
             .navbar-brand {
                 font-size: 1.5rem;
             }
+            
+            .alert-message {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                width: auto;
+                max-width: none;
+            }
         }
 
         @media (max-width: 768px) {
@@ -908,6 +994,13 @@
             
             .profile-img-container {
                 max-width: 320px;
+            }
+            
+            .alert-message {
+                bottom: 15px;
+                right: 15px;
+                left: 15px;
+                padding: 12px 15px;
             }
         }
 
@@ -965,6 +1058,25 @@
             
             .social-links {
                 justify-content: center;
+            }
+            
+            .alert-message {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                padding: 10px 12px;
+            }
+            
+            .alert-icon {
+                font-size: 1.2rem;
+            }
+            
+            .alert-title {
+                font-size: 0.9rem;
+            }
+            
+            .alert-text {
+                font-size: 0.8rem;
             }
         }
 
@@ -1049,6 +1161,20 @@
         <div class="loader"></div>
     </div>
 
+    <!-- Alert Message Container -->
+    <div id="alertMessage" class="alert-message">
+        <div class="alert-icon">
+            <i class="fas"></i>
+        </div>
+        <div class="alert-content">
+            <div class="alert-title"></div>
+            <div class="alert-text"></div>
+        </div>
+        <button class="alert-close" onclick="hideAlert()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <!-- Particles Background -->
     <div id="particles-js"></div>
 
@@ -1095,7 +1221,7 @@
                             Hi, I'm <span class="highlight">Sithuru Kawinda</span>
                         </h1>
                         <h2>Physical Science Undergraduate & Full Stack Developer</h2>
-                        <p>I'm a Full Stack Developer from Sri Lanka, currently pursuing a Physical Science degree with Computer Science as my major subject. I specialize in building responsive, secure, and user-friendly web applications. I’m passionate about software development, problem-solving, and continuous learning.</p>
+                        <p>I'm a Full Stack Developer from Sri Lanka, currently pursuing a Physical Science degree with Computer Science as my major subject. I specialize in building responsive, secure, and user-friendly web applications. I'm passionate about software development, problem-solving, and continuous learning.</p>
                         
                         <div class="btn-group">
                             <a href="#projects" class="btn-custom btn-primary-custom">
@@ -1582,12 +1708,12 @@
                     <div class="card-modern" data-aos="fade-left">
                         <h3 class="text-primary mb-4">Send Message</h3>
                         
-                        <form action="https://formspree.io/f/xovwjbkk" method="POST">
+                        <form id="contactForm" method="POST" action="send_mail.php">
                             <input type="text" name="name" class="form-control-modern" placeholder="Your Name" required>
                             <input type="email" name="email" class="form-control-modern" placeholder="Your Email" required>
                             <input type="text" name="subject" class="form-control-modern" placeholder="Subject">
                             <textarea name="message" class="form-control-modern" rows="5" placeholder="Your Message" required></textarea>
-                            <button type="submit" class="btn-custom btn-primary-custom w-100">
+                            <button type="submit" class="btn-custom btn-primary-custom w-100" id="submitBtn">
                                 <i class="fas fa-paper-plane"></i>
                                 Send Message
                             </button>
@@ -1794,97 +1920,95 @@
             });
         });
 
-        // Form submission
-        const contactForm = document.querySelector('#contact form');
+        // Alert message function
+        function showAlert(type, title, message) {
+            const alertDiv = document.getElementById('alertMessage');
+            const alertIcon = alertDiv.querySelector('.alert-icon i');
+            const alertTitle = alertDiv.querySelector('.alert-title');
+            const alertText = alertDiv.querySelector('.alert-text');
+            
+            // Remove previous classes
+            alertDiv.classList.remove('success', 'error', 'show');
+            
+            // Add new type class
+            alertDiv.classList.add(type);
+            
+            // Set icon based on type
+            if (type === 'success') {
+                alertIcon.className = 'fas fa-check-circle';
+            } else {
+                alertIcon.className = 'fas fa-exclamation-circle';
+            }
+            
+            // Set title and message
+            alertTitle.textContent = title;
+            alertText.textContent = message;
+            
+            // Show alert
+            setTimeout(() => {
+                alertDiv.classList.add('show');
+            }, 100);
+            
+            // Auto hide after 5 seconds
+            setTimeout(hideAlert, 5000);
+        }
+
+        function hideAlert() {
+            const alertDiv = document.getElementById('alertMessage');
+            alertDiv.classList.remove('show');
+        }
+
+        // Contact form submission with AJAX
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+
         if (contactForm) {
             contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
                 
+                // Show loading state
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
                 submitBtn.disabled = true;
                 
                 try {
                     const formData = new FormData(this);
-                    const response = await fetch(this.action, {
+                    
+                    const response = await fetch('send_mail.php', {
                         method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        body: formData
                     });
 
+                    const result = await response.json();
+                    
                     if (response.ok) {
+                        // Show success message
+                        showAlert('success', 'Success!', 'Your message has been sent successfully.');
+                        this.reset(); // Reset form
+                        
+                        // Reset button
                         submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Sent!';
-                        this.reset();
                         setTimeout(() => {
                             submitBtn.innerHTML = originalText;
                             submitBtn.disabled = false;
-                        }, 3000);
+                        }, 2000);
                     } else {
-                        throw new Error('Submission failed');
+                        throw new Error(result.error || 'Failed to send message');
                     }
                 } catch (error) {
+                    // Show error message
+                    showAlert('error', 'Error!', error.message || 'Failed to send message. Please try again.');
+                    
+                    // Reset button
                     submitBtn.innerHTML = '<i class="fas fa-times me-2"></i>Error!';
                     setTimeout(() => {
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
-                    }, 3000);
+                    }, 2000);
                 }
             });
         }
     </script>
 </body>
-</html>m mekt addd krl hdl denn email ekk denmm yn wdiyt denmt mek mm hdl thiyene <?php
-header('Content-Type: application/json');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect and sanitize input data
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
-    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
-    
-    // Validate email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Invalid email address']);
-        exit;
-    }
-    
-    // Set recipient
-    $to = 'sithuru15@gmail.com';
-    
-    // Set email headers
-    $headers = "From: $name <$email>\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    
-    // Compose email content
-    $email_content = "Name: $name\n";
-    $email_content .= "Email: $email\n";
-    $email_content .= "Subject: $subject\n\n";
-    $email_content .= "Message:\n$message\n";
-    
-    // Send email
-    if (mail($to, $subject, $email_content, $headers)) {
-        http_response_code(200);
-        echo json_encode(['success' => 'Message sent successfully!']);
-    } else {
-        http_response_code(500);
-        echo json_encode(['error' => 'Failed to send message. Please try again.']);
-    }
-} else {
-    http_response_code(405);
-    echo json_encode(['error' => 'Method not allowed']);
-}
-?>
-
-
-
-
-
-
+</html>
