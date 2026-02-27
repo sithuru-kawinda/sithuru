@@ -1817,49 +1817,55 @@
         });
 
         // Form submission
-        const contactForm = document.querySelector('#contact form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-                submitBtn.disabled = true;
-                
-                try {
-                    const formData = new FormData(this);
-                    const response = await fetch(this.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Sent!';
-                        this.reset();
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.disabled = false;
-                        }, 3000);
-                    } else {
-                        throw new Error('Submission failed');
-                    }
-                } catch (error) {
-                    submitBtn.innerHTML = '<i class="fas fa-times me-2"></i>Error!';
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    }, 3000);
-                }
+const contactForm = document.querySelector('#contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        const formMessages = document.getElementById('form-messages');
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+        submitBtn.disabled = true;
+        formMessages.innerHTML = '';
+        
+        try {
+            const formData = new FormData(this);
+            const response = await fetch('send_email.php', {
+                method: 'POST',
+                body: formData
             });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                formMessages.innerHTML = '<div class="alert alert-success">' + data.success + '</div>';
+                this.reset();
+                submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Sent!';
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    formMessages.innerHTML = '';
+                }, 3000);
+            } else {
+                throw new Error(data.error || 'Submission failed');
+            }
+        } catch (error) {
+            formMessages.innerHTML = '<div class="alert alert-danger">' + error.message + '</div>';
+            submitBtn.innerHTML = '<i class="fas fa-times me-2"></i>Error!';
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
         }
+    });
+}
+        
     </script>
 </body>
 </html>
+
 
 
 
