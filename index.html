@@ -651,6 +651,45 @@
             box-shadow: 0 0 30px var(--primary-glow);
         }
 
+        /* Project Filters */
+        .project-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 22px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-dim);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
+
+        .project-card-modern.hidden {
+            display: none;
+        }
+
         /* Contact Section */
         .contact-grid {
             display: grid;
@@ -1499,10 +1538,20 @@
         <section id="projects">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">My <span>Projects</span></h2>
-                
+
+                <div class="project-filters" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="java">Java</button>
+                    <button class="filter-btn" data-filter="react">React</button>
+                    <button class="filter-btn" data-filter="javascript">JavaScript</button>
+                    <button class="filter-btn" data-filter="php">PHP</button>
+                    <button class="filter-btn" data-filter="nodejs">Node.js</button>
+                </div>
+
                 <div class="projects-grid">
-                    <!-- Project 1 -->
-                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="100">
+
+                    <!-- 1: Skill Bridge -->
+                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="0">
                         <img src="projects/skillbridge.png" alt="Skill Bridge" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Skill Bridge</h3>
@@ -1524,38 +1573,17 @@
                         </div>
                     </div>
 
-                          <!-- Project 2 -->
-                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="350">
-                        <img src="projects/slparadis.png" alt="php" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">slparadis</h3>
-                            <p class="text-dim">Using php lanvage create travelling website.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">PHP</span>
-                                <span class="project-tag">MYSQL</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://slparadise.kesug.com/" class="project-link" target="_blank">
-                                    <i class="fas fa-eye"></i> View
-                                </a>
-                                <a href="https://github.com/sithuru-kawinda/slparadis.git" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                   
-                     <!-- Project 3 -->
-                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="50">
-                        <img src="projects/aswenna.png" alt="aswenna farmer system" class="project-image">
+                    <!-- 2: Aswenna -->
+                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="50">
+                        <img src="projects/aswenna.png" alt="Aswenna farmer system" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Aswenna</h3>
-                            <p class="text-dim">Restaurant Booking platform built with Java with Xampp localhost.</p>
+                            <p class="text-dim">Farmer marketplace platform built with React and Spring Boot.</p>
                             <div class="project-tags">
+                                <span class="project-tag">React</span>
                                 <span class="project-tag">Spring Boot</span>
                                 <span class="project-tag">Java</span>
                                 <span class="project-tag">MySQL</span>
-                                <span class="project-tag">XAMPP</span>
                             </div>
                             <div class="project-links">
                                 <a href="https://www.linkedin.com/posts/sithuru-kawinda-0a1150275_react-springboot-mysql-activity-7396795413271515136-hy02?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy" class="project-link" target="_blank">
@@ -1568,9 +1596,8 @@
                         </div>
                     </div>
 
-                    
-                    <!-- Project 4 -->
-                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="50">
+                    <!-- 3: Restaurant Booking -->
+                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="100">
                         <img src="projects/restaurant_booking.png" alt="Restaurant Booking" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Restaurant Booking</h3>
@@ -1591,9 +1618,7 @@
                         </div>
                     </div>
 
-                    
-                    
-                    <!-- Project 5-->
+                    <!-- 4: School Management -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="150">
                         <img src="projects/school_Management.png" alt="School Management" class="project-image">
                         <div class="project-content">
@@ -1613,9 +1638,49 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Project 6 -->
+
+                    <!-- 5: SL Paradise -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="200">
+                        <img src="projects/slparadis.png" alt="SL Paradise travel website" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">slparadis</h3>
+                            <p class="text-dim">Using php lanvage create travelling website.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MYSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://slparadise.kesug.com/" class="project-link" target="_blank">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                                <a href="https://github.com/sithuru-kawinda/slparadis.git" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6: TCCR Platform -->
+                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="250">
+                        <img src="projects/tccr.png" alt="TCCR community platform" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">TCCR Platform</h3>
+                            <p class="text-dim">Community platform for The Christian Center Ratmalana. Brings Bible School learning and Cell Group fellowship into a single platform with course batches, cell tracking, and leader tools.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">Web App</span>
+                                <span class="project-tag">LMS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://tccr.lk/en" class="project-link" target="_blank">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7: Vehicle Rental -->
+                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="300">
                         <img src="projects/vehical.png" alt="Vehicle Rental" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Vehicle Rental</h3>
@@ -1635,9 +1700,9 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Project 7 -->
-                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="250">
+
+                    <!-- 8: Coding API Learning -->
+                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="350">
                         <video autoplay muted loop playsinline class="project-image">
                             <source src="projects/videos/v4.mp4" type="video/mp4">
                         </video>
@@ -1660,30 +1725,9 @@
                             </div>
                         </div>
                     </div>
-                    
-                   
 
-                    <!-- Project TCCR -->
-                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="50">
-                        <img src="projects/tccr.png" alt="TCCR" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">TCCR Platform</h3>
-                            <p class="text-dim">Community platform for The Christian Center Ratmalana. Brings Bible School learning and Cell Group fellowship into a single platform with course batches, cell tracking, and leader tools.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Web App</span>
-                                <span class="project-tag">Community</span>
-                                <span class="project-tag">LMS</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://tccr.lk/en" class="project-link" target="_blank">
-                                    <i class="fas fa-eye"></i> View
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- Project 8 -->
-                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="300">
+                    <!-- 9: AI Voice Assistant -->
+                    <div class="project-card-modern" data-aos="flip-up" data-aos-delay="400">
                         <video autoplay muted loop playsinline class="project-image">
                             <source src="projects/videos/voice assistent.mp4" type="video/mp4">
                         </video>
@@ -1705,8 +1749,7 @@
                             </div>
                         </div>
                     </div>
-                    
-              
+
                 </div>
             </div>
         </section>
@@ -1979,6 +2022,42 @@
                 if (navbarCollapse.classList.contains('show')) {
                     navbarCollapse.classList.remove('show');
                 }
+            });
+        });
+
+        // Assign language tags to project cards
+        const projectLangMap = {
+            'Skill Bridge':        'java react',
+            'slparadis':           'php',
+            'Aswenna':             'java react',
+            'Restaurant Booking':  'java',
+            'School Management':   'java',
+            'Vehicle Rental':      'javascript',
+            'Coding API Learning': 'javascript',
+            'TCCR Platform':       'nodejs',
+            'AI Voice Assistant':  'javascript'
+        };
+
+        document.querySelectorAll('.project-card-modern').forEach(function(card) {
+            var title = card.querySelector('.project-title');
+            if (title) {
+                card.dataset.lang = projectLangMap[title.textContent.trim()] || '';
+            }
+        });
+
+        // Project filter buttons
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                this.classList.add('active');
+
+                var lang = this.dataset.filter;
+                document.querySelectorAll('.project-card-modern').forEach(function(card) {
+                    var cardLangs = (card.dataset.lang || '').split(' ').filter(Boolean);
+                    var show = lang === 'all' || cardLangs.includes(lang);
+                    card.classList.toggle('hidden', !show);
+                });
             });
         });
 
