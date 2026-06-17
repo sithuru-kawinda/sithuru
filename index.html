@@ -9,12 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
             --primary: #00ffff;
@@ -560,7 +560,7 @@
         /* Project Cards */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
 
@@ -756,7 +756,6 @@
             top: 100px;
             right: 20px;
             z-index: 9999;
-            min-width: 300px;
             max-width: 400px;
             padding: 15px 20px;
             border-radius: 12px;
@@ -989,57 +988,71 @@
             section {
                 padding: 70px 0;
             }
-            
+
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero h2 {
                 font-size: 1.2rem;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .info-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .skills-grid {
                 grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
                 gap: 15px;
             }
-            
+
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-            
+
             .btn-group {
                 flex-direction: column;
             }
-            
+
             .btn-custom {
                 width: 100%;
             }
-            
+
             .card-modern {
                 padding: 30px;
             }
-            
+
             .timeline-content-modern {
                 padding: 20px;
             }
-            
+
+            .timeline-content-modern:hover {
+                transform: none;
+            }
+
             .profile-img-container {
                 max-width: 320px;
             }
-            
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
             .alert-message {
                 bottom: 15px;
                 right: 15px;
                 left: 15px;
                 padding: 12px 15px;
+                max-width: none;
             }
         }
 
@@ -1109,13 +1122,34 @@
             .alert-icon {
                 font-size: 1.2rem;
             }
-            
+
             .alert-title {
                 font-size: 0.9rem;
             }
-            
+
             .alert-text {
                 font-size: 0.8rem;
+            }
+
+            .project-image {
+                height: 180px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 12px;
+            }
+
+            .contact-grid {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .timeline-item-modern {
+                padding-left: 30px;
             }
         }
 
@@ -1123,22 +1157,47 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
+
             .section-title {
                 font-size: 1.5rem;
             }
-            
+
             .profile-img-container {
                 max-width: 240px;
             }
-            
+
             .btn-custom {
                 padding: 10px 20px;
                 font-size: 0.85rem;
             }
-            
+
             .info-item {
                 padding: 15px;
+            }
+
+            .project-image {
+                height: 160px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .skill-item {
+                padding: 15px 8px;
+            }
+
+            .timeline-item-modern {
+                padding-left: 25px;
+            }
+
+            .stat-number {
+                font-size: 1.3rem;
+            }
+
+            .card-modern {
+                padding: 20px;
             }
         }
 
@@ -1552,7 +1611,7 @@
 
                     <!-- 1: Skill Bridge -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="0">
-                        <img src="projects/skillbridge.png" alt="Skill Bridge" class="project-image">
+                        <img src="projects/skillbridge.png" alt="Skill Bridge" loading="lazy" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Skill Bridge</h3>
                             <p class="text-dim">Microservice-based platform built with Spring Boot. Connects learners and mentors.</p>
@@ -1575,7 +1634,7 @@
 
                     <!-- 2: Aswenna -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="50">
-                        <img src="projects/aswenna.png" alt="Aswenna farmer system" class="project-image">
+                        <img src="projects/aswenna.png" alt="Aswenna farmer system" loading="lazy" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Aswenna</h3>
                             <p class="text-dim">Farmer marketplace platform built with React and Spring Boot.</p>
@@ -1598,7 +1657,7 @@
 
                     <!-- 3: Restaurant Booking -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="100">
-                        <img src="projects/restaurant_booking.png" alt="Restaurant Booking" class="project-image">
+                        <img src="projects/restaurant_booking.png" alt="Restaurant Booking" loading="lazy" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Restaurant Booking</h3>
                             <p class="text-dim">Restaurant Booking platform built with Java with Xampp localhost.</p>
@@ -1620,7 +1679,7 @@
 
                     <!-- 4: School Management -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="150">
-                        <img src="projects/school_Management.png" alt="School Management" class="project-image">
+                        <img src="projects/school_Management.png" alt="School Management" loading="lazy" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">School Management</h3>
                             <p class="text-dim">School Management project using Java language & MySQL database.</p>
@@ -1641,7 +1700,7 @@
 
                     <!-- 5: SL Paradise -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="200">
-                        <img src="projects/slparadis.png" alt="SL Paradise travel website" class="project-image">
+                        <img src="projects/slparadis.png" alt="SL Paradise travel website" loading="lazy" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">slparadis</h3>
                             <p class="text-dim">Using php lanvage create travelling website.</p>
@@ -1662,7 +1721,7 @@
 
                     <!-- 6: TCCR Platform -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="250">
-                        <img src="projects/tccr.png" alt="TCCR community platform" class="project-image">
+                        <img src="projects/tccr.png" alt="TCCR community platform" loading="lazy" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">TCCR Platform</h3>
                             <p class="text-dim">Community platform for The Christian Center Ratmalana. Brings Bible School learning and Cell Group fellowship into a single platform with course batches, cell tracking, and leader tools.</p>
@@ -1681,7 +1740,7 @@
 
                     <!-- 7: Vehicle Rental -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="300">
-                        <img src="projects/vehical.png" alt="Vehicle Rental" class="project-image">
+                        <img src="projects/vehical.png" alt="Vehicle Rental" loading="lazy" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">Vehicle Rental</h3>
                             <p class="text-dim">HTML CSS JS use create website</p>
@@ -1703,7 +1762,7 @@
 
                     <!-- 8: Coding API Learning -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="350">
-                        <video autoplay muted loop playsinline class="project-image">
+                        <video autoplay muted loop playsinline loading="lazy" class="project-image">
                             <source src="projects/videos/v4.mp4" type="video/mp4">
                         </video>
                         <div class="project-content">
@@ -1728,7 +1787,7 @@
 
                     <!-- 9: AI Voice Assistant -->
                     <div class="project-card-modern" data-aos="flip-up" data-aos-delay="400">
-                        <video autoplay muted loop playsinline class="project-image">
+                        <video autoplay muted loop playsinline loading="lazy" class="project-image">
                             <source src="projects/videos/voice assistent.mp4" type="video/mp4">
                         </video>
                         <div class="project-content">
@@ -1869,6 +1928,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Initialize AOS
         AOS.init({
@@ -1889,7 +1949,7 @@
         particlesJS('particles-js', {
             particles: {
                 number: {
-                    value: 60,
+                    value: 40,
                     density: {
                         enable: true,
                         value_area: 800
@@ -1968,7 +2028,7 @@
                     }
                 }
             },
-            retina_detect: true
+            retina_detect: false
         });
 
         // Navbar scroll effect

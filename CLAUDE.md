@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a static personal portfolio website for Sithuru Kawinda. There is no build step — open `index.html` directly in a browser or serve it with any static/PHP-capable web server.
 
+**Brand & design intent:** See `PRODUCT.md`. The core principle is precision over decoration — restraint signals seniority. Avoid gratuitous glow effects, over-animation, or anything that looks like a generic dark Bootstrap template.
+
 ## Serving the site
 
 - Open `index.html` directly in a browser (particles and AOS will work; contact form will not)
@@ -56,7 +58,7 @@ The form POSTs to `send_mail.php` via `fetch()` (line 2040) and `<form action="s
 Project cards are hand-coded HTML blocks inside `#projects > .projects-grid` in `index.html`. Each card follows this structure:
 
 ```html
-<div class="project-card-modern" data-aos="flip-up" data-aos-delay="...">
+<div class="project-card-modern" data-aos="flip-up" data-aos-delay="..." data-lang="react java">
     <img src="projects/your-image.png" alt="..." class="project-image">
     <div class="project-content">
         <h3 class="project-title">Title</h3>
@@ -71,6 +73,8 @@ Project cards are hand-coded HTML blocks inside `#projects > .projects-grid` in 
     </div>
 </div>
 ```
+
+**`data-lang` is required for the language filter to work.** The value is a space-separated list of filter keys. Valid values (must match the filter buttons exactly): `java`, `react`, `javascript`, `php`, `nodejs`. A card without `data-lang` will be hidden by all filters except "All". Currently no existing cards have `data-lang` set — they need to be added.
 
 Use `<video autoplay muted loop playsinline class="project-image">` instead of `<img>` for video previews.
 
