@@ -1054,14 +1054,18 @@
             }
 
             .card-modern {
-                padding: 30px;
+                padding: 22px;
             }
 
             .timeline-content-modern {
-                padding: 20px;
+                padding: 18px 20px;
             }
 
             .timeline-content-modern:hover {
+                transform: none;
+            }
+
+            .journey-card:hover {
                 transform: none;
             }
 
@@ -1117,26 +1121,27 @@
             }
             
             .card-modern {
-                padding: 25px;
+                padding: 18px;
             }
-            
+
             .skill-item {
-                padding: 20px 10px;
+                padding: 18px 8px;
             }
-            
+
             .skill-icon {
-                width: 40px;
-                height: 40px;
+                width: 38px;
+                height: 38px;
             }
-            
+
             .skill-name {
-                font-size: 0.8rem;
+                font-size: 0.78rem;
             }
-            
+
             .contact-item-modern {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
+                padding: 14px;
             }
             
             .project-links {
@@ -1895,6 +1900,109 @@
             object-fit: contain;
         }
 
+        /* ── COMPREHENSIVE RESPONSIVE ADDITIONS ───────────────────── */
+
+        /* Tablet — ≤991px */
+        @media (max-width: 991px) {
+            /* Kill hero gradient to prevent horizontal overflow */
+            .hero::before { display: none; }
+            /* Journey collapses to single column on tablets */
+            .journey-grid { grid-template-columns: 1fr; gap: 22px; }
+            /* Role tag scales down */
+            .hero-role-tag { font-size: 0.78rem; padding: 5px 14px; }
+            /* Footer centre on tablet */
+            .footer-title { text-align: center; }
+            .footer-links { text-align: center; }
+            .footer-links a:hover { padding-left: 0; }
+            .social-links { justify-content: center; }
+        }
+
+        /* Large phone — ≤768px */
+        @media (max-width: 768px) {
+            /* Project filter bar */
+            .project-filters { gap: 8px; }
+            .filter-btn { padding: 6px 14px; font-size: 0.83rem; }
+            /* Journey section */
+            .journey-card { margin-bottom: 12px; }
+            .journey-col-header { margin-bottom: 14px; padding-bottom: 10px; }
+            /* Navbar collapse items */
+            .navbar-collapse .nav-link { padding: 10px 0 !important; border-bottom: 1px solid var(--border-color); }
+            .navbar-collapse .nav-item:last-child .nav-link { border-bottom: none; }
+            /* Footer download button full-width */
+            .footer .btn-custom { width: 100%; justify-content: center; }
+            /* Card bottom margin cleanup */
+            .cert-card { margin-bottom: 0; }
+        }
+
+        /* Small phone — ≤576px */
+        @media (max-width: 576px) {
+            /* Tighten section padding */
+            section { padding: 55px 0; }
+            /* Hero */
+            .hero-role-tag { font-size: 0.72rem; padding: 5px 12px; gap: 6px; }
+            .hero-badge { font-size: 0.71rem; padding: 4px 10px; }
+            .hero-tech-badges { gap: 6px; }
+            /* Social icons */
+            .social-icon { width: 40px; height: 40px; font-size: 1rem; border-radius: 10px; }
+            .social-links { gap: 8px; }
+            /* Journey cards */
+            .journey-grid { gap: 8px; }
+            .journey-card { padding: 14px 16px 16px; margin-bottom: 8px; }
+            .journey-card h4 { font-size: 0.92rem; }
+            .journey-card h5 { font-size: 0.8rem; margin-bottom: 8px; }
+            .journey-card p { font-size: 0.8rem; }
+            .journey-col-header h3 { font-size: 1rem; }
+            .journey-card-date { font-size: 0.7rem; padding: 2px 8px; }
+            /* Project filters */
+            .project-filters { gap: 6px; }
+            .filter-btn { padding: 5px 12px; font-size: 0.78rem; }
+            /* GitHub stats */
+            .github-stat-card { padding: 14px; }
+            /* Cert buttons */
+            .cert-view-btn { font-size: 0.74rem; padding: 5px 12px; margin-top: 8px; }
+            /* Modals */
+            .proj-modal-header { padding: 16px 16px 0; }
+            .proj-modal-body { padding: 14px 16px 20px; }
+            .proj-modal-links { flex-direction: column; }
+            /* Footer */
+            .footer-modern { padding: 40px 0 16px; text-align: center; }
+            .footer-title { text-align: center; }
+            .footer-links { text-align: center; }
+            .footer-links a:hover { padding-left: 0; }
+            .social-links { justify-content: center; }
+            /* Contact form */
+            .form-control-modern { padding: 13px 14px; margin-bottom: 14px; }
+            /* Info items */
+            .info-label { font-size: 0.78rem; }
+            .info-value { font-size: 0.9rem; }
+        }
+
+        /* Tiny phone — ≤400px */
+        @media (max-width: 400px) {
+            /* Hero tech badges too cramped — hide */
+            .hero-tech-badges { display: none; }
+            /* Journey ultra-compact */
+            .journey-card { padding: 12px 14px; }
+            .journey-card-num { width: 20px; height: 20px; font-size: 0.62rem; }
+            /* Project links */
+            .project-link { padding: 7px 4px; font-size: 0.76rem; }
+            .project-details-btn { font-size: 0.75rem; }
+            /* Section title */
+            .section-title { font-size: 1.6rem; }
+            /* Nav brand */
+            .navbar-brand { font-size: 1.3rem; }
+            /* Cert card date wrap */
+            .cert-date { font-size: 0.75rem; }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         /* Print Styles */
         @media print {
             .navbar, .footer-modern, .btn-custom, .social-links {
@@ -1960,10 +2068,10 @@
                             <a class="nav-link" href="#education">Education</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#certifications">Certifications</a>
+                            <a class="nav-link" href="#projects">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#projects">Projects</a>
+                            <a class="nav-link" href="#certifications">Certifications</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contact</a>
@@ -2321,89 +2429,6 @@
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Certifications &amp; <span>Achievements</span></h2>
-
-                <div class="cert-grid">
-
-                    <!-- MoraXtreme 9.0 -->
-                    <div class="cert-card" data-aos="fade-up" data-aos-delay="0">
-                        <div class="cert-icon-wrap">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="cert-body">
-                            <span class="cert-badge cert-badge-comp">Competition</span>
-                            <h4 class="cert-title">MoraXtreme 9.0</h4>
-                            <p class="cert-org">IEEE Student Branch &amp; IEEE Computer Society, University of Moratuwa</p>
-                            <p class="cert-detail">Certificate of Participation — Algorithmic Coding Competition. Team CodeSpark.</p>
-                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> October 19, 2024</span>
-                            <br>
-                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-moraxtreme.png','MoraXtreme 9.0 — Certificate of Participation')">
-                                <i class="fas fa-eye"></i> View Certificate
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Shuttle Master '24 -->
-                    <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="cert-icon-wrap" style="background:rgba(255,200,0,0.1);color:#ffc800;">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div class="cert-body">
-                            <span class="cert-badge cert-badge-award">Achievement</span>
-                            <h4 class="cert-title">Shuttle Master '24 — 3rd Place</h4>
-                            <p class="cert-org">Astronomy Club, University of Sri Jayewardenepura</p>
-                            <p class="cert-detail">Certificate of Achievement — Maximum Distance Water Rocket Title. Team Meta 69.</p>
-                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> 2024</span>
-                            <br>
-                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-shuttle-master.png','Shuttle Master \'24 — Certificate of Achievement')">
-                                <i class="fas fa-eye"></i> View Certificate
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Python for Beginners -->
-                    <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="cert-icon-wrap" style="background:rgba(0,255,136,0.1);color:var(--success);">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <div class="cert-body">
-                            <span class="cert-badge cert-badge-course">Course</span>
-                            <h4 class="cert-title">Python for Beginners</h4>
-                            <p class="cert-org">CODL, University of Moratuwa</p>
-                            <p class="cert-detail">Online Learning Programme — Dept. of Computer Science &amp; Engineering, Faculty of Engineering.</p>
-                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> May 6, 2025</span>
-                            <br>
-                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-python.png','Python for Beginners — CODL, University of Moratuwa')">
-                                <i class="fas fa-eye"></i> View Certificate
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- CSA Committee Member -->
-                    <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="cert-icon-wrap" style="background:rgba(150,100,255,0.1);color:#9664ff;">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="cert-body">
-                            <span class="cert-badge cert-badge-member">Membership</span>
-                            <h4 class="cert-title">CSA Committee Member</h4>
-                            <p class="cert-org">Computer Science Association, University of Sri Jayewardenepura</p>
-                            <p class="cert-detail">Recognised committee member — Annual General Meeting 2026.</p>
-                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> 2026</span>
-                            <br>
-                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-csa.png','CSA Committee Member — University of Sri Jayewardenepura')">
-                                <i class="fas fa-eye"></i> View Photo
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
         <!-- Projects Section -->
         <section id="projects">
             <div class="container">
@@ -2621,6 +2646,89 @@
             </div>
         </section>
 
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Certifications &amp; <span>Achievements</span></h2>
+
+                <div class="cert-grid">
+
+                    <!-- MoraXtreme 9.0 -->
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="cert-icon-wrap">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="cert-body">
+                            <span class="cert-badge cert-badge-comp">Competition</span>
+                            <h4 class="cert-title">MoraXtreme 9.0</h4>
+                            <p class="cert-org">IEEE Student Branch &amp; IEEE Computer Society, University of Moratuwa</p>
+                            <p class="cert-detail">Certificate of Participation — Algorithmic Coding Competition. Team CodeSpark.</p>
+                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> October 19, 2024</span>
+                            <br>
+                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-moraxtreme.png','MoraXtreme 9.0 — Certificate of Participation')">
+                                <i class="fas fa-eye"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Shuttle Master '24 -->
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="cert-icon-wrap" style="background:rgba(255,200,0,0.1);color:#ffc800;">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="cert-body">
+                            <span class="cert-badge cert-badge-award">Achievement</span>
+                            <h4 class="cert-title">Shuttle Master '24 — 3rd Place</h4>
+                            <p class="cert-org">Astronomy Club, University of Sri Jayewardenepura</p>
+                            <p class="cert-detail">Certificate of Achievement — Maximum Distance Water Rocket Title. Team Meta 69.</p>
+                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> 2024</span>
+                            <br>
+                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-shuttle-master.png','Shuttle Master \'24 — Certificate of Achievement')">
+                                <i class="fas fa-eye"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Python for Beginners -->
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="cert-icon-wrap" style="background:rgba(0,255,136,0.1);color:var(--success);">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="cert-body">
+                            <span class="cert-badge cert-badge-course">Course</span>
+                            <h4 class="cert-title">Python for Beginners</h4>
+                            <p class="cert-org">CODL, University of Moratuwa</p>
+                            <p class="cert-detail">Online Learning Programme — Dept. of Computer Science &amp; Engineering, Faculty of Engineering.</p>
+                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> May 6, 2025</span>
+                            <br>
+                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-python.png','Python for Beginners — CODL, University of Moratuwa')">
+                                <i class="fas fa-eye"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CSA Committee Member -->
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="cert-icon-wrap" style="background:rgba(150,100,255,0.1);color:#9664ff;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="cert-body">
+                            <span class="cert-badge cert-badge-member">Membership</span>
+                            <h4 class="cert-title">CSA Committee Member</h4>
+                            <p class="cert-org">Computer Science Association, University of Sri Jayewardenepura</p>
+                            <p class="cert-detail">Recognised committee member — Annual General Meeting 2026.</p>
+                            <span class="cert-date"><i class="fas fa-calendar-alt"></i> 2026</span>
+                            <br>
+                            <button class="cert-view-btn" onclick="openCertLightbox('images/certificates/cert-csa.png','CSA Committee Member — University of Sri Jayewardenepura')">
+                                <i class="fas fa-eye"></i> View Photo
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- GitHub Activity Section -->
         <section id="github-activity">
             <div class="container">
@@ -2742,21 +2850,21 @@
                     </div>
 
                     <!-- Quick links column -->
-                    <div class="col-lg-4 col-6">
+                    <div class="col-lg-4 col-sm-6">
                         <h3 class="footer-title">Navigate</h3>
                         <ul class="footer-links">
                             <li><a href="#home"><i class="fas fa-home me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>Home</a></li>
                             <li><a href="#about"><i class="fas fa-user me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>About</a></li>
                             <li><a href="#skills"><i class="fas fa-code me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>Skills</a></li>
                             <li><a href="#education"><i class="fas fa-graduation-cap me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>Education</a></li>
-                            <li><a href="#certifications"><i class="fas fa-certificate me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>Certifications</a></li>
                             <li><a href="#projects"><i class="fas fa-folder-open me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>Projects</a></li>
+                            <li><a href="#certifications"><i class="fas fa-certificate me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>Certifications</a></li>
                             <li><a href="#contact"><i class="fas fa-paper-plane me-2" style="width:14px;color:var(--primary);opacity:.7;"></i>Contact</a></li>
                         </ul>
                     </div>
 
                     <!-- Contact column -->
-                    <div class="col-lg-4 col-6">
+                    <div class="col-lg-4 col-sm-6">
                         <h3 class="footer-title">Get In Touch</h3>
                         <ul class="footer-links">
                             <li>
