@@ -6,7 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a static personal portfolio website for Sithuru Kawinda. There is no build step — open `index.html` directly in a browser or serve it with any static/PHP-capable web server.
 
-**Brand & design intent:** See `PRODUCT.md`. The core principle is precision over decoration — restraint signals seniority. Avoid gratuitous glow effects, over-animation, or anything that looks like a generic dark Bootstrap template.
+**Brand & design intent:** The core principle is precision over decoration — restraint signals seniority. The target audience (hiring managers, senior developers) can immediately distinguish a thoughtful site from a template. Three explicit anti-patterns to avoid:
+- Generic Bootstrap dark portfolio look — cyan/purple gradients on black with particles everywhere
+- Over-animated CSS showcases where motion distracts from the work
+- Corporate-flat pages with no personal voice
+
+Full brand details are in `PRODUCT.md`. WCAG AA accessibility is required (sufficient contrast, keyboard-navigable).
 
 ## Serving the site
 
@@ -31,9 +36,10 @@ All content lives in a single file: `index.html` contains the full HTML structur
 
 **Local assets:**
 - `images/image.png` — profile photo (also used as the favicon)
+- `images/kawinda.jpg` — alternative profile photo (not currently referenced in `index.html`)
 - `images/sithuru_cv.pdf` — downloadable resume
 - `projects/*.png` — project screenshots
-- `projects/videos/*.mp4` — project demo videos (used as `<video autoplay muted loop>` in project cards)
+- `projects/videos/v1.mp4`, `projects/videos/v4.mp4`, `projects/videos/voice assistent.mp4` — project demo videos (used as `<video autoplay muted loop>` in project cards)
 
 ## JavaScript (embedded `<script>` block)
 
@@ -45,7 +51,7 @@ The script at the bottom of `index.html` initializes in this order:
 
 ## Contact form
 
-The form POSTs to `send_mail.php` via `fetch()` (line 2040) and `<form action="send_mail.php">` (line 1773). The actual backend file on disk is `send_email.php` — **outstanding fix: rename `send_email.php` → `send_mail.php`**. The PHP handler validates fields, then uses `mail()` to send to `sithuru15@gmail.com`.
+The form POSTs to `send_mail.php` via `fetch()` (line 2219) and `<form action="send_mail.php">` (line 1915). The PHP handler validates fields, then uses `mail()` to send to `sithuru15@gmail.com`.
 
 ## Dead files — do not use
 
