@@ -1149,13 +1149,9 @@
             }
             
             .footer-modern {
-                text-align: center;
+                text-align: left;
             }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
+
             .alert-message {
                 bottom: 10px;
                 right: 10px;
@@ -1910,11 +1906,8 @@
             .journey-grid { grid-template-columns: 1fr; gap: 22px; }
             /* Role tag scales down */
             .hero-role-tag { font-size: 0.78rem; padding: 5px 14px; }
-            /* Footer centre on tablet */
-            .footer-title { text-align: center; }
-            .footer-links { text-align: center; }
-            .footer-links a:hover { padding-left: 0; }
-            .social-links { justify-content: center; }
+            /* Footer left-aligned on tablet */
+            .footer-modern { text-align: left; }
         }
 
         /* Large phone — ≤768px */
@@ -1964,12 +1957,15 @@
             .proj-modal-header { padding: 16px 16px 0; }
             .proj-modal-body { padding: 14px 16px 20px; }
             .proj-modal-links { flex-direction: column; }
-            /* Footer */
-            .footer-modern { padding: 40px 0 16px; text-align: center; }
-            .footer-title { text-align: center; }
-            .footer-links { text-align: center; }
-            .footer-links a:hover { padding-left: 0; }
-            .social-links { justify-content: center; }
+            /* Footer — left-aligned and compact on mobile */
+            .footer-modern { padding: 32px 0 14px; text-align: left; }
+            .footer-title { font-size: 1.05rem; margin-bottom: 14px; }
+            .footer-links li { margin-bottom: 6px; }
+            .footer-links a { font-size: 0.85rem; }
+            .footer-brand-desc { font-size: 0.82rem; }
+            .footer-modern .navbar-brand { font-size: 1.3rem !important; }
+            .footer-modern .social-icon { width: 36px; height: 36px; font-size: 1rem; border-radius: 10px; }
+            .footer-modern .social-links { gap: 8px; margin-top: 12px !important; }
             /* Contact form */
             .form-control-modern { padding: 13px 14px; margin-bottom: 14px; }
             /* Info items */
@@ -2755,12 +2751,35 @@
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">GitHub <span>Activity</span></h2>
 
+                <p class="text-dim text-center mb-4" data-aos="fade-up" data-aos-delay="50" style="max-width:640px;margin-left:auto;margin-right:auto;">Building web projects in Java, Spring Boot, and React — 24 public repositories and counting on GitHub.</p>
+
+                <div class="row g-4 mb-4 justify-content-center" data-aos="fade-up" data-aos-delay="75">
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">24</div>
+                            <div class="stat-label">Public Repos</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Stars Earned</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">2023</div>
+                            <div class="stat-label">Member Since</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="github-stats-grid" data-aos="fade-up" data-aos-delay="100">
                     <div class="github-stat-card">
-                        <img src="https://github-readme-stats.vercel.app/api?username=sithuru-kawinda&show_icons=true&hide_border=true&title_color=00ffff&icon_color=00ffff&text_color=9aa4b8&bg_color=111417&count_private=true" alt="Sithuru Kawinda GitHub Stats" loading="lazy">
+                        <img src="https://github-readme-stats.vercel.app/api?username=sithuru-kawinda&show_icons=true&hide_border=true&title_color=00ffff&icon_color=00ffff&text_color=9aa4b8&bg_color=111417&count_private=true" alt="Sithuru Kawinda GitHub Stats" loading="lazy" onerror="this.closest('.github-stat-card').style.display='none'">
                     </div>
                     <div class="github-stat-card">
-                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sithuru-kawinda&layout=compact&hide_border=true&title_color=00ffff&text_color=9aa4b8&bg_color=111417&hide=html,css" alt="Top Languages" loading="lazy">
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sithuru-kawinda&layout=compact&hide_border=true&title_color=00ffff&text_color=9aa4b8&bg_color=111417&hide=html,css" alt="Top Languages" loading="lazy" onerror="this.closest('.github-stat-card').style.display='none'">
                     </div>
                 </div>
 
@@ -2852,13 +2871,13 @@
             <div class="container">
 
                 <!-- Top row -->
-                <div class="row gy-4 pb-4">
+                <div class="row gy-3 pb-3 gy-lg-4 pb-lg-4">
 
                     <!-- Brand column -->
                     <div class="col-lg-4">
                         <a class="navbar-brand d-inline-block mb-3" href="#home" style="font-size:1.6rem;font-weight:700;color:var(--primary);text-shadow:0 0 15px var(--primary-glow);text-decoration:none;">Sithuru<span style="color:#fff;">.</span></a>
-                        <p class="text-dim" style="font-size:0.88rem;line-height:1.7;max-width:280px;">CS undergraduate at the University of Sri Jayewardenepura. Java &amp; Spring Boot developer open to Software Engineering Internships and Associate Engineer roles.</p>
-                        <div class="d-flex align-items-center gap-2 mt-3">
+                        <p class="text-dim footer-brand-desc" style="font-size:0.88rem;line-height:1.7;max-width:280px;">CS undergraduate at the University of Sri Jayewardenepura. Java &amp; Spring Boot developer open to Software Engineering Internships and Associate Engineer roles.</p>
+                        <div class="d-flex align-items-center gap-2 mt-3 footer-availability">
                             <span style="width:8px;height:8px;background:var(--success);border-radius:50%;display:inline-block;box-shadow:0 0 8px rgba(0,255,136,0.6);"></span>
                             <span style="font-size:0.8rem;color:var(--success);font-weight:600;">Available for Opportunities</span>
                         </div>
@@ -2921,7 +2940,7 @@
 
                 <!-- Bottom bar -->
                 <div style="border-top:1px solid var(--border-color);padding-top:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-                    <p class="text-muted mb-0" style="font-size:0.82rem;">&copy; 2026 Sithuru Kawinda. All Rights Reserved.</p>
+                    <p class="mb-0" style="font-size:0.82rem;color:#ffffff;">&copy; 2026 Sithuru Kawinda. All Rights Reserved.</p>
                     <a href="#home" style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,255,255,0.07);border:1px solid rgba(0,255,255,0.18);color:var(--primary);padding:6px 14px;border-radius:8px;font-size:0.8rem;font-weight:600;text-decoration:none;transition:0.2s;" onmouseover="this.style.background='rgba(0,255,255,0.14)'" onmouseout="this.style.background='rgba(0,255,255,0.07)'">
                         <i class="fas fa-arrow-up"></i> Back to Top
                     </a>
