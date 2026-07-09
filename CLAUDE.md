@@ -35,9 +35,9 @@ All content lives in a single file: `index.html` contains the full HTML structur
 **Skill icons** come from `https://cdn.jsdelivr.net/gh/devicons/devicon/` — no local icon files. The GitHub Activity section embeds `github-readme-stats.vercel.app` images for stats/top-languages — no local data.
 
 **Local assets:**
-- `images/image.png` — profile photo (also used as the favicon)
-- `images/kawinda.jpg` — alternative profile photo (not currently referenced in `index.html`)
-- `images/sithuru_cv.pdf` — downloadable resume
+- `images/image.png` — favicon only (`<link rel="icon">`)
+- `images/kawinda.jpg` — profile photo, used in the Home/About section
+- `images/sithuru_kawinda_cv.pdf` — downloadable resume
 - `images/certificates/*.png` — certificate images shown via the certification lightbox
 - `projects/*.png` — project screenshots
 - `projects/videos/v1.mp4`, `projects/videos/v4.mp4`, `projects/videos/voice assistent.mp4` — project demo videos (used as `<video autoplay muted loop playsinline>` in project cards instead of `<img>`)
